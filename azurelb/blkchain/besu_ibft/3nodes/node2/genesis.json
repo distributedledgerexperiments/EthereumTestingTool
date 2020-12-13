@@ -1,0 +1,37 @@
+{
+  "config":{
+    "chainId":26,
+    "constantinoplefixblock": 0,
+    "ibft2":{
+      "blockperiodseconds":2,
+      "epochlength":30000,
+      "requesttimeoutseconds": 4
+    }
+  },
+  "coinbase":"0x0000000000000000000000000000000000000000",
+  "difficulty":"0x1",
+
+"extraData":"0xf869a00000000000000000000000000000000000000000000000000000000000000000f83f94edc6c4e7d1908b435e41c55c5ffbac85e43472a1940d9bed903e8c42b2392a3474f227b9fe8de396969407d571c2b10cb5cf77225509b2fad1ee7bef5381808400000000c0",
+  "gasLimit":"0xDA4A530",
+  "mixHash":"0x0000000000000000000000000000000000000000000000000000000000000000",
+  "nonce":"0x0",
+  "timestamp":"0x5c51a607",
+  "alloc": {
+      "f0b3899f511039c8d1b1e18f2628fac9fe79bca2": {
+        "balance": "0xad78ebc5ac6200000"
+      },
+      "edc6c4e7d1908b435e41c55c5ffbac85e43472a1": {
+        "balance": "90000000000000000000000"
+      },
+      "0d9bed903e8c42b2392a3474f227b9fe8de39696": {
+        "balance": "90000000000000000000000"
+      },
+      "07d571c2b10cb5cf77225509b2fad1ee7bef5381": {
+        "balance": "90000000000000000000000"
+      }
+
+   },
+  "number":"0x0",
+  "gasUsed":"0x0",
+  "parentHash":"0x0000000000000000000000000000000000000000000000000000000000000000"
+}

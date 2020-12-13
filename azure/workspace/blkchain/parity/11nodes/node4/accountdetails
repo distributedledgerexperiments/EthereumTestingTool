@@ -1,0 +1,5 @@
+./parity/openethereum account new --config node.toml
+
+0xc63376f0bf907a041f46135d0db34ba7c60936d9
+
+pwd: nissan

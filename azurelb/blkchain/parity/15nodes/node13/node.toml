@@ -1,0 +1,41 @@
+[parity]
+chain = "./renault.json"
+base_path = "./datadir"
+
+[network]
+port = 30300
+bootnodes=["enode://e8a116f3f14ec6d8d658bab719a303bf0c3bb7798e1a410ee237fe544e3b2099c8e1b8ea22841c00912719b95c480e17e276d6eb77e4458538bdf32a9f24ceb6@10.0.2.4:30300"]
+
+[rpc]
+port = 2000
+apis = ["web3", "eth", "net", "personal", "parity", "parity_set", "traces", "rpc", "parity_accounts"]
+interface ="all"
+cors=["all"]
+hosts=["all"]
+
+
+
+[websockets]
+port = 2200
+apis = ["web3", "eth", "net", "personal", "parity", "parity_set", "traces", "rpc", "parity_accounts"]
+interface ="all"
+hosts=["all"]
+origins=["all"]
+
+[account]
+unlock=["0x80cd00103933717762535347e85801a55f0f8a78"]
+password=["./node.pwds"]
+
+[mining]
+engine_signer="0x80cd00103933717762535347e85801a55f0f8a78"
+reseal_on_txs = "none"
+force_sealing = true
+tx_queue_per_sender = 80000000
+gas_floor_target= "228894000"
+gas_cap = "228894000"
+tx_queue_mem_limit=40
+tx_queue_size=  80000000
+
+
+[ui]
+port = 8180

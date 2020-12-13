@@ -1,0 +1,35 @@
+test:
+  name: main
+  description: >-
+    This is an example benchmark for caliper, to test the backend DLT's
+    performance with addition operation of three variables
+  workers:
+    type: local
+    number: 1
+  rounds:
+    - label: add
+      description: >-
+        Test description for the addition of three variables
+      txNumber: 100
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 50
+      workload:
+        module: contractdata/add.js
+    - label: query
+      description: Test description for the query performance of the deployed chaincode
+      txNumber: 100
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 100
+      workload:
+        module: contractdata/query.js
+monitor:
+  type:
+    - docker
+  docker:
+    name:
+      - all
+  interval: 1

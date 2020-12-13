@@ -1,0 +1,23 @@
+FROM 127.0.0.1:5000/renaultblockchain/ubuntubase
+
+ENV USER_NAME renault
+
+ENV pythonfile=$pythonfile
+
+ENV gethurl=$gethurl
+
+ENV hosturl=$hosturl
+
+ENV mongodbport=$mongodbport
+
+ENV rabbithost=$rabbithost
+
+ENV HOME /home/$USER_NAME
+WORKDIR /home/$USER_NAME
+
+COPY $pythonfile /home/$USER_NAME/
+
+COPY main.json /home/$USER_NAME/
+
+CMD ["sh", "-c","python3 $pythonfile $gethurl $hosturl $mongodbport $rabbithost"]
+

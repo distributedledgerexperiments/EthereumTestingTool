@@ -1,0 +1,22 @@
+FROM rabbitmq:3.6-management
+
+#Proxy Setting Install Squid before
+#ENV PROXY_ADDRESS 10.214.226.142
+#ENV PROXY_PORT 3130
+
+#ENV http_proxy http://$PROXY_ADDRESS:$PROXY_PORT
+#ENV https_proxy http://$PROXY_ADDRESS:$PROXY_PORT
+
+#To suppress debian package configuration prompts
+ENV DEBIAN_FRONTEND noninteractive
+
+RUN echo "root:root" | chpasswd
+
+#RUN echo "Acquire::http::proxy \"http://$PROXY_ADDRESS:$PROXY_PORT/\";" > /etc/apt/apt.conf.d/proxy
+
+RUN apt-get update -y
+
+RUN apt-get install -y curl
+
+EXPOSE 4369 5671 5672 25672 15671 15672
+

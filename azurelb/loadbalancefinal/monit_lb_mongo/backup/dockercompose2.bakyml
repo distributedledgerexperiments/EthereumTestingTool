@@ -1,0 +1,205 @@
+version: "2.2"
+services:
+        
+        mongodbnode1:
+                image: mongo
+                restart: unless-stopped
+                environment:
+                        MONGO_INITDB_ROOT_USERNAME: guest
+                        MONGO_INITDB_ROOT_PASSWORD: guest
+                        MONGO_INITDB_DATABASE: resultdb
+                        MONGODB_DATA_DIR: /data/db
+                        MONDODB_LOG_DIR: /dev/null
+                volumes:
+                 - ./mongodbdata1:/data/db
+                hostname: mongodbnode1
+                ports:
+                 - "27017:27017"
+                cpus: 1
+                mem_limit: 1000M
+                networks:
+                  chainnet:
+                    ipv4_address: 172.25.0.101
+        mongodbnode2:
+                image: mongo
+                restart: unless-stopped
+                environment:
+                        MONGO_INITDB_ROOT_USERNAME: guest
+                        MONGO_INITDB_ROOT_PASSWORD: guest
+                        MONGO_INITDB_DATABASE: resultdb
+                        MONGODB_DATA_DIR: /data/db
+                        MONDODB_LOG_DIR: /dev/null
+                volumes:
+                 - ./mongodbdata2:/data/db
+                hostname: mongodbnode2
+                ports:
+                 - "28017:27017"
+                cpus: 1
+                mem_limit: 1000M
+                networks:
+                  chainnet:
+                    ipv4_address: 172.25.0.102
+        mongodbnode3:
+                image: mongo
+                restart: unless-stopped
+                environment:
+                        MONGO_INITDB_ROOT_USERNAME: guest
+                        MONGO_INITDB_ROOT_PASSWORD: guest
+                        MONGO_INITDB_DATABASE: resultdb
+                        MONGODB_DATA_DIR: /data/db
+                        MONDODB_LOG_DIR: /dev/null
+                volumes:
+                 - ./mongodbdata3:/data/db
+                hostname: mongodbnode3
+                ports:
+                 - "29017:27017"
+                cpus: 1
+                mem_limit: 1000M
+                networks:
+                  chainnet:
+                    ipv4_address: 172.25.0.103
+        mongodbnode4:
+                image: mongo
+                restart: unless-stopped
+                environment:
+                        MONGO_INITDB_ROOT_USERNAME: guest
+                        MONGO_INITDB_ROOT_PASSWORD: guest
+                        MONGO_INITDB_DATABASE: resultdb
+                        MONGODB_DATA_DIR: /data/db
+                        MONDODB_LOG_DIR: /dev/null
+                volumes:
+                 - ./mongodbdata4:/data/db
+                hostname: mongodbnode4
+                ports:
+                 - "30017:27017"
+                cpus: 1
+                mem_limit: 1000M
+                networks:
+                  chainnet:
+                    ipv4_address: 172.25.0.104
+        prometheus:
+                image: prom/prometheus
+                user: root
+                ports:
+                 - "9090:9090"
+                volumes:
+                 - ./geth-prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+                networks:
+                  chainnet:
+                    ipv4_address: 172.25.0.105
+        grafana:
+              image: grafana/grafana
+              user: root
+              ports:
+                 - "3300:3000"
+              volumes:
+                - ./geth-prometheus/grafana.db:/var/lib/grafana/grafana.db
+              networks:
+                chainnet:
+                  ipv4_address: 172.25.0.106
+        nginxnode:
+                image: nginx
+                volumes:
+                 - ./lnginxbalancer/default.conf:/etc/nginx/conf.d/default.conf
+                 - ./lnginxbalancer/nginx.conf:/etc/nginx/nginx.conf
+                 - ./nginxdata:/var/log/nginx
+                hostname: nginxnode
+                ports:
+                 - "8080:80"
+                cpus: 2
+                mem_limit: 1000M
+                networks:
+                  chainnet:
+                    ipv4_address: 172.25.0.107
+        
+        mongodbnode5:
+                image: mongo
+                restart: unless-stopped
+                environment:
+                        MONGO_INITDB_ROOT_USERNAME: guest
+                        MONGO_INITDB_ROOT_PASSWORD: guest
+                        MONGO_INITDB_DATABASE: resultdb
+                        MONGODB_DATA_DIR: /data/db
+                        MONDODB_LOG_DIR: /dev/null
+                volumes:
+                 - ./mongodbdata5:/data/db
+                hostname: mongodbnode5
+                ports:
+                 - "31017:27017"
+                cpus: 1
+                mem_limit: 1000M
+                networks:
+                  chainnet:
+                    ipv4_address: 172.25.0.108
+        mongodbnode6:
+                image: mongo
+                restart: unless-stopped
+                environment:
+                        MONGO_INITDB_ROOT_USERNAME: guest
+                        MONGO_INITDB_ROOT_PASSWORD: guest
+                        MONGO_INITDB_DATABASE: resultdb
+                        MONGODB_DATA_DIR: /data/db
+                        MONDODB_LOG_DIR: /dev/null
+                volumes:
+                 - ./mongodbdata6:/data/db
+                hostname: mongodbnode2
+                ports:
+                 - "32017:27017"
+                cpus: 1
+                mem_limit: 1000M
+                networks:
+                  chainnet:
+                    ipv4_address: 172.25.0.109
+        mongodbnode7:
+                image: mongo
+                restart: unless-stopped
+                environment:
+                        MONGO_INITDB_ROOT_USERNAME: guest
+                        MONGO_INITDB_ROOT_PASSWORD: guest
+                        MONGO_INITDB_DATABASE: resultdb
+                        MONGODB_DATA_DIR: /data/db
+                        MONDODB_LOG_DIR: /dev/null
+                volumes:
+                 - ./mongodbdata7:/data/db
+                hostname: mongodbnode7
+                ports:
+                 - "33017:27017"
+                cpus: 1
+                mem_limit: 1000M
+                networks:
+                  chainnet:
+                    ipv4_address: 172.25.0.110
+        mongodbnode8:
+                image: mongo
+                restart: unless-stopped
+                environment:
+                        MONGO_INITDB_ROOT_USERNAME: guest
+                        MONGO_INITDB_ROOT_PASSWORD: guest
+                        MONGO_INITDB_DATABASE: resultdb
+                        MONGODB_DATA_DIR: /data/db
+                        MONDODB_LOG_DIR: /dev/null
+                volumes:
+                 - ./mongodbdata8:/data/db
+                hostname: mongodbnode8
+                ports:
+                 - "34017:27017"
+                cpus: 1
+                mem_limit: 1000M
+                networks:
+                  chainnet:
+                    ipv4_address: 172.25.0.111
+  
+
+
+
+networks:
+  chainnet:
+    driver: bridge
+    ipam:
+      config:
+      - subnet: 172.25.0.0/24
+        gateway: 172.25.0.1
+
+        
+
+        

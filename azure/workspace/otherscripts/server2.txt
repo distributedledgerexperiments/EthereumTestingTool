@@ -1,0 +1,5 @@
+sockperf: [2;35m== version #3.7-1.gitb741ab3c60b1 == [0m
+sockperf: [SERVER] listen on:
+[ 0] IP = 10.0.2.8        PORT = 12345 # TCP
+sockperf: Warmup stage (sending a few dummy messages)...
+sockperf: [tid 10613] using recvfrom() to block on socket(s)

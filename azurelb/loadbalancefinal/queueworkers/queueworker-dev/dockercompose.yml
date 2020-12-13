@@ -1,0 +1,99 @@
+version: "2.2"
+services:
+        
+        redisnode:
+                image: redis:6.0.3-alpine
+                volumes:
+                 - ./volumedata/redisdata:/data
+                command: ["redis-server", "--appendonly", "yes"]
+                hostname: redisnode
+                ports:
+                 - "6379:6379"
+                cpus: 1
+                mem_limit: 1000M
+                networks:
+                  chainnet:
+                    ipv4_address: 172.25.0.101
+
+        rabbitmq1:
+                image: rabbit
+                restart: on-failure
+                volumes:
+                 - ./volumedata/rabbitmq1:/var/lib/rabbitmq
+                hostname: rabbitmq1
+                build:
+                  context: .
+                  dockerfile: docker_rabbit
+                  labels:
+                   - "docker.group=dockerrabbit"
+                container_name: rabbitmq
+                ports: 
+                 - "5672:5672"
+                 - "15672:15672"
+                cpus: 0.5
+                mem_limit: 1000M
+                networks:
+                  chainnet:
+                    ipv4_address: 172.25.0.102
+                healthcheck:
+                 test: ["CMD", "curl", "-f", "http://localhost:15672"]
+                 interval: 30s
+                 timeout: 10s
+                 retries: 5
+        
+        aioserver1:
+                image: renaultblockchain/docker_aioserver1
+                restart: on-failure
+                hostname: docker_aioserver1
+                depends_on:
+                        - redisnode
+                        - rabbitmq1
+                links:
+                        - rabbitmq1
+                build:
+                  context: .
+                  dockerfile: docker_aioserver1
+                  labels:
+                   - "docker.group=aioserver1"
+                container_name: aioserver1
+                ports:
+                 - "9090:9090"
+                cpus: 1
+                mem_limit: 1000M
+                networks:
+                  chainnet:
+                    ipv4_address: 172.25.0.103
+
+        server1worker1:
+                image: renaultblockchain/docker_worker1
+                restart: on-failure
+                hostname: worker1
+                depends_on:
+                        - redisnode
+                        - aioserver1
+                        - rabbitmq1
+                links:
+                        - rabbitmq1
+                build:       
+                  context: .
+                  dockerfile: docker_worker1
+                  labels:
+                   - "docker.group=worker1"
+                container_name: worker1
+                cpus: 1
+                mem_limit: 1000M
+                networks:
+                  chainnet:
+                    ipv4_address: 172.25.0.104
+
+networks:
+  chainnet:
+    driver: bridge
+    ipam:
+      config:
+      - subnet: 172.25.0.0/24
+        gateway: 172.25.0.1
+
+        
+
+        

@@ -1,0 +1,5 @@
+Change in prometheus.yml for node graphql url host: 6060
+
+Also check in datasource for prometheus url
+
+URL: http://10.214.226.37:3300/

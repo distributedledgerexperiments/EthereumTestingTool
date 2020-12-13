@@ -1,0 +1,22 @@
+{
+    "caliper": {
+        "blockchain": "ethereum"
+    },
+    "ethereum": {
+        "url": "ws://10.0.2.5:2200",
+        "contractDeployerAddress": "0x995453f12fB74910e6d90E4F2773187927A6a4D9",
+        "contractDeployerAddressPassword": "nissan",
+        "fromAddress": "0x995453f12fB74910e6d90E4F2773187927A6a4D9",
+        "fromAddressPassword": "nissan",
+        "transactionConfirmationBlocks": 12,
+        "contracts": {
+            "main": {
+                "path": "contractdata/main.json",
+                "gas": {
+                    "addTest": 45000000,
+                    "readAdd": 100000000
+                }
+            }
+        }
+    }
+}

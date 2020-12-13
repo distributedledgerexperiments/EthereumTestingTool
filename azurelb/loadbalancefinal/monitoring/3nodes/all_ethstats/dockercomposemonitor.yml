@@ -1,0 +1,43 @@
+version: "2.2"
+services:
+        ethstatsservice:
+                image: buythewhale/ethstats_monitor
+                hostname: ethstats_service
+                container_name: ethstats_service
+                user: root
+                ports:
+                 - 3300:3000
+                cpus: 1
+                mem_limit: 1000M
+                volumes:
+                 - ./app.json:/home/ethnetintel/eth-net-intelligence-api/app.json:ro
+                networks:
+                  chainnetmonitor:
+                    ipv4_address: 172.26.0.101
+
+        dashboardservice:
+                hostname: dashboardservice
+                image: buythewhale/ethstats
+                container_name: dashboardservice
+                user: root
+                ports:
+                 - 3001:3000
+                cpus: 1
+                mem_limit: 1000M
+                volumes:
+                 - ./ethstatssecret.json:/eth-netstats/ws_secret.json:ro
+                networks:
+                  chainnetmonitor:
+                    ipv4_address: 172.26.0.102
+
+networks:
+  chainnetmonitor:
+    driver: bridge
+    ipam:
+      config:
+      - subnet: 172.26.0.0/24
+        gateway: 172.26.0.1
+
+                        
+
+        

@@ -1,0 +1,2 @@
+TotalValidblocks,Leastblocksize,MaxBlocksize,Leastblockgaslimit,Maxblockgaslimit,Leastblockgasused,Maxblockgasused,Leastblocktransactions,Maxblocktransactions,blocktimeperiod,totaltxs,finaltps,firedtps,totalfiredtime,totalblocktimeinterval,txgasused,TotalUncleblocks,Iteration,Latency
+47,746,71056,228894000,228894000,76298,19761182,2,518,2,10000,97.0873786407767,98.03921568627452,102,103,38149,4.5,1,1.0181

@@ -1,0 +1,95 @@
+version: "2.2"
+services:
+        
+        redisnode:
+                image: redis:6.0.3-alpine
+                volumes:
+                 - ./volumedata/redisdata:/data
+                command: ["redis-server", "--appendonly", "yes"]
+                hostname: redisnode
+                ports:
+                 - "6379:6379"
+                cpus: 1
+                mem_limit: 1000M
+                networks:
+                  chainnet:
+                    ipv4_address: 172.25.0.101
+
+        rabbitmq:
+                image: 127.0.0.1:5000/renaultblockchain/rabbitbase
+                restart: on-failure
+                volumes:
+                 - ./volumedata/rabbitmq:/var/lib/rabbitmq
+                hostname: rabbitmq
+                container_name: rabbitmq
+                ports: 
+                 - "5672:5672"
+                 - "15672:15672"
+                cpus: 0.5
+                mem_limit: 1000M
+                networks:
+                  chainnet:
+                    ipv4_address: 172.25.0.102
+                healthcheck:
+                 test: ["CMD", "curl", "-f", "http://localhost:15672"]
+                 interval: 30s
+                 timeout: 10s
+                 retries: 5
+        
+        aioserver:
+                image: 127.0.0.1:5000/renaultblockchain/aioserverbase
+                restart: on-failure
+                hostname: docker_aioserver
+                depends_on:
+                        - redisnode
+                        - rabbitmq
+                links:
+                        - rabbitmq
+                environment:
+                        - pythonfile=aioserverqueueproducer.py
+                        - rabbithost=172.25.0.102
+                container_name: aioserver
+                ports:
+                 - "9090:9090"
+                cpus: 1
+                mem_limit: 1000M
+                networks:
+                  chainnet:
+                    ipv4_address: 172.25.0.103
+
+        serverworker:
+                image: 127.0.0.1:5000/renaultblockchain/workerbase
+                restart: on-failure
+                hostname: worker
+                depends_on:
+                        - redisnode
+                        - aioserver
+                        - rabbitmq
+                links:
+                        - rabbitmq
+                environment:
+                        - pythonfile=classqueueworker.py
+                        - gethurl=ws://10.214.226.142:2200
+                        - hosturl=10.214.226.36
+                        - mongodbport=27017
+                        - rabbithost=172.25.0.102
+                container_name: worker
+                cpus: 1
+                mem_limit: 1000M
+                networks:
+                  chainnet:
+                    ipv4_address: 172.25.0.104
+        
+        
+
+networks:
+  chainnet:
+    driver: bridge
+    ipam:
+      config:
+      - subnet: 172.25.0.0/24
+        gateway: 172.25.0.1
+
+        
+
+        

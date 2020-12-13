@@ -1,0 +1,19 @@
+FROM 127.0.0.1:5000/renaultblockchain/ubuntubase
+
+#Environment Setup
+
+ENV USER_NAME renault
+
+ENV pythonfile=$pythonfile
+
+ENV rabbithost=$rabbithost
+
+ENV HOME /home/$USER_NAME
+WORKDIR /home/$USER_NAME
+
+COPY $pythonfile /home/$USER_NAME/
+
+CMD ["sh", "-c","python3 $pythonfile $rabbithost"]
+
+EXPOSE 9090
+

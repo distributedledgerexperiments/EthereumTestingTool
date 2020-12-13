@@ -1,0 +1,18 @@
+FROM hyperledger/caliper:0.4.0-unstable-20200629163850
+
+#Proxy Setting Install Squid before
+#ENV PROXY_ADDRESS 10.214.226.142
+#ENV PROXY_PORT 3130
+
+#ENV http_proxy http://$PROXY_ADDRESS:$PROXY_PORT
+#ENV https_proxy http://$PROXY_ADDRESS:$PROXY_PORT
+
+#To suppress debian package configuration prompts
+ENV DEBIAN_FRONTEND noninteractive
+
+#RUN echo "Acquire::http::proxy \"http://$PROXY_ADDRESS:$PROXY_PORT/\";" > /etc/apt/apt.conf.d/proxy
+
+#RUN npm config set proxy http://$PROXY_ADDRESS:$PROXY_PORT
+
+#RUN npm config set https-proxy http://$PROXY_ADDRESS:$PROXY_PORT
+

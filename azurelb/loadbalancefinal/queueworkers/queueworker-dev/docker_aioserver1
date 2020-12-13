@@ -1,0 +1,43 @@
+FROM ubuntu:18.04
+
+#Proxy Setting Install Squid before
+ENV PROXY_ADDRESS 10.214.226.142
+ENV PROXY_PORT 3130
+
+ENV http_proxy http://$PROXY_ADDRESS:$PROXY_PORT
+ENV https_proxy http://$PROXY_ADDRESS:$PROXY_PORT
+
+#To suppress debian package configuration prompts
+ENV DEBIAN_FRONTEND noninteractive
+
+RUN echo "root:root" | chpasswd
+
+RUN echo "Acquire::http::proxy \"http://$PROXY_ADDRESS:$PROXY_PORT/\";" > /etc/apt/apt.conf.d/proxy
+
+RUN apt-get update -y
+
+RUN apt-get install -y python3-pip python3-dev
+
+RUN pip3 install pika
+
+RUN pip3 install asyncio
+
+RUN pip3 install aiohttp
+
+#Environment Setup
+
+ENV USER_NAME renault
+
+RUN useradd -ms /bin/bash $USER_NAME
+
+ENV HOME /home/$USER_NAME
+WORKDIR /home/$USER_NAME
+
+COPY aioserverqueueproducer.py /home/$USER_NAME/
+
+ENTRYPOINT ["python3"] 
+
+CMD ["aioserverqueueproducer.py"]
+
+EXPOSE 9090
+

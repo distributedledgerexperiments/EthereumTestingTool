@@ -1,0 +1,4 @@
+check "WS_SERVER"     : "http://172.26.0.102:3000", to point to dashboard url
+
+
+URL: http://10.214.226.37:3001/

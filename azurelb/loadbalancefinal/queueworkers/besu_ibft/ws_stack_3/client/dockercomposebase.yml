@@ -1,0 +1,41 @@
+version: "2.2"
+services:
+        
+        rabbitmqbase:
+                image: 127.0.0.1:5000/renaultblockchain/rabbitbase:latest
+                build:
+                  context: .
+                  dockerfile: docker_rabbitbase
+                  labels:
+                   - "docker.group=rabbitbase"
+
+        
+        ubuntubase:
+                image: 127.0.0.1:5000/renaultblockchain/ubuntubase:latest
+                build:
+                  context: .
+                  dockerfile: docker_ubuntubase
+                  labels:
+                   - "docker.group=ubuntubase"
+
+        aioserverbase:
+                image: 127.0.0.1:5000/renaultblockchain/aioserverbase:latest
+                build:
+                  context: .
+                  dockerfile: docker_aioserver_base
+                  labels:
+                   - "docker.group=aioserverbase"
+
+        workerbase:
+                image: 127.0.0.1:5000/renaultblockchain/workerbase:latest
+                build:
+                  context: .
+                  dockerfile: docker_worker_base
+                  labels:
+                   - "docker.group=workerbase"
+
+
+        
+        
+
+        

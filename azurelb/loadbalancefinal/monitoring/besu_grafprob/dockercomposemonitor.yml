@@ -1,0 +1,45 @@
+version: "2.2"
+services:
+        prometheusservice:
+                hostname: prometheusservice
+                image: prom/prometheus
+                container_name: prometheusservice
+                user: root
+                ports:
+                 - 9090:9090
+                cpus: 0.5
+                mem_limit: 500M
+                volumes:
+                 - ./prometheusnode.yml:/etc/prometheus/prometheus.yml
+                networks:
+                  chainnetmonitor:
+                    ipv4_address: 172.26.0.101
+
+        grafanaservice:
+                image: grafana/grafana:latest
+                hostname: grafanaservice
+                container_name: garafanaservice
+                user: root
+                ports:
+                 - 3300:3000
+                cpus: 0.5
+                mem_limit: 500M
+                volumes:
+                 - ./provisioning:/etc/grafana/provisioning
+                 - ./provisioning/dashboards:/var/lib/grafana/dashboards
+                networks:
+                  chainnetmonitor:
+                    ipv4_address: 172.26.0.102
+
+
+networks:
+  chainnetmonitor:
+    driver: bridge
+    ipam:
+      config:
+      - subnet: 172.26.0.0/24
+        gateway: 172.26.0.1
+
+                        
+
+        

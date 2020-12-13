@@ -1,0 +1,178 @@
+admin:
+  access_log_path: /tmp/admin_access.log
+  address:
+    socket_address:
+      protocol: TCP
+      address: 0.0.0.0
+      port_value: 8081
+static_resources:
+  listeners:
+  - name: listener_0
+    address:
+      socket_address:
+        protocol: TCP
+        address: 0.0.0.0
+        port_value: 8080
+    filter_chains:
+    - filters:
+      - name: envoy.filters.network.http_connection_manager
+        typed_config:
+          "@type": type.googleapis.com/envoy.config.filter.network.http_connection_manager.v2.HttpConnectionManager
+          stat_prefix: ingress_http
+          route_config:
+            name: local_route
+            virtual_hosts:
+            - name: local_service
+              domains: ["*"]
+              routes:
+              - match:
+                  prefix: "/"
+                route:
+                  cluster: servicenode
+          http_filters:
+          - name: envoy.filters.http.router
+  clusters:
+  - name: servicenode
+    connect_timeout: 0.25s
+    type: STATIC
+    # Comment out the following line to test on v6 networks
+    #dns_lookup_family: V4_ONLY
+    lb_policy: ROUND_ROBIN
+    hosts: [
+      { socket_address: { address: 10.214.226.36, port_value: 9002 }},
+      { socket_address: { address: 10.214.226.146, port_value: 9002 }},
+      { socket_address: { address: 10.214.226.38, port_value: 9002 }},
+      { socket_address: { address: 10.214.226.39, port_value: 9002 }},
+       { socket_address: { address: 10.214.226.36, port_value: 9003 }},
+      { socket_address: { address: 10.214.226.146, port_value: 9003 }},
+      { socket_address: { address: 10.214.226.38, port_value: 9003 }},
+      { socket_address: { address: 10.214.226.39, port_value: 9003 }},
+       { socket_address: { address: 10.214.226.36, port_value: 9004 }},
+      { socket_address: { address: 10.214.226.146, port_value: 9004 }},
+      { socket_address: { address: 10.214.226.38, port_value: 9004 }},
+      { socket_address: { address: 10.214.226.39, port_value: 9004 }},
+       { socket_address: { address: 10.214.226.36, port_value: 9005 }},
+      { socket_address: { address: 10.214.226.146, port_value: 9005 }},
+      { socket_address: { address: 10.214.226.38, port_value: 9005 }},
+      { socket_address: { address: 10.214.226.39, port_value: 9005 }},
+       { socket_address: { address: 10.214.226.36, port_value: 9006 }},
+      { socket_address: { address: 10.214.226.146, port_value: 9006 }},
+      { socket_address: { address: 10.214.226.38, port_value: 9006 }},
+      { socket_address: { address: 10.214.226.39, port_value: 9006 }},
+       { socket_address: { address: 10.214.226.36, port_value: 9007 }},
+      { socket_address: { address: 10.214.226.146, port_value: 9007 }},
+      { socket_address: { address: 10.214.226.38, port_value: 9007 }},
+      { socket_address: { address: 10.214.226.39, port_value: 9007 }},
+       { socket_address: { address: 10.214.226.36, port_value: 9008 }},
+      { socket_address: { address: 10.214.226.146, port_value: 9008 }},
+      { socket_address: { address: 10.214.226.38, port_value: 9008 }},
+      { socket_address: { address: 10.214.226.39, port_value: 9008 }},
+       { socket_address: { address: 10.214.226.36, port_value: 9009 }},
+      { socket_address: { address: 10.214.226.146, port_value: 9009 }},
+      { socket_address: { address: 10.214.226.38, port_value: 9009 }},
+      { socket_address: { address: 10.214.226.39, port_value: 9009 }},
+       { socket_address: { address: 10.214.226.36, port_value: 9010 }},
+      { socket_address: { address: 10.214.226.146, port_value: 9010 }},
+      { socket_address: { address: 10.214.226.38, port_value: 9010 }},
+      { socket_address: { address: 10.214.226.39, port_value: 9010 }},
+       { socket_address: { address: 10.214.226.36, port_value: 9011 }},
+      { socket_address: { address: 10.214.226.146, port_value: 9011 }},
+      { socket_address: { address: 10.214.226.38, port_value: 9011 }},
+      { socket_address: { address: 10.214.226.39, port_value: 9011 }},
+      { socket_address: { address: 10.214.226.36, port_value: 9012 }},
+      { socket_address: { address: 10.214.226.146, port_value: 9012 }},
+      { socket_address: { address: 10.214.226.38, port_value: 9012 }},
+      { socket_address: { address: 10.214.226.39, port_value: 9012 }},
+       { socket_address: { address: 10.214.226.36, port_value: 9013 }},
+      { socket_address: { address: 10.214.226.146, port_value: 9013 }},
+      { socket_address: { address: 10.214.226.38, port_value: 9013 }},
+      { socket_address: { address: 10.214.226.39, port_value: 9013 }},
+       { socket_address: { address: 10.214.226.36, port_value: 9014 }},
+      { socket_address: { address: 10.214.226.146, port_value: 9014 }},
+      { socket_address: { address: 10.214.226.38, port_value: 9014 }},
+      { socket_address: { address: 10.214.226.39, port_value: 9014 }},
+       { socket_address: { address: 10.214.226.36, port_value: 9015 }},
+      { socket_address: { address: 10.214.226.146, port_value: 9015 }},
+      { socket_address: { address: 10.214.226.38, port_value: 9015 }},
+      { socket_address: { address: 10.214.226.39, port_value: 9015 }},
+       { socket_address: { address: 10.214.226.36, port_value: 9016 }},
+      { socket_address: { address: 10.214.226.146, port_value: 9016 }},
+      { socket_address: { address: 10.214.226.38, port_value: 9016 }},
+      { socket_address: { address: 10.214.226.39, port_value: 9016 }},
+       { socket_address: { address: 10.214.226.36, port_value: 9017 }},
+      { socket_address: { address: 10.214.226.146, port_value: 9017 }},
+      { socket_address: { address: 10.214.226.38, port_value: 9017 }},
+      { socket_address: { address: 10.214.226.39, port_value: 9017 }},
+       { socket_address: { address: 10.214.226.36, port_value: 9018 }},
+      { socket_address: { address: 10.214.226.146, port_value: 9018 }},
+      { socket_address: { address: 10.214.226.38, port_value: 9018 }},
+      { socket_address: { address: 10.214.226.39, port_value: 9018 }},
+       { socket_address: { address: 10.214.226.36, port_value: 9019 }},
+      { socket_address: { address: 10.214.226.146, port_value: 9019 }},
+      { socket_address: { address: 10.214.226.38, port_value: 9019 }},
+      { socket_address: { address: 10.214.226.39, port_value: 9019 }},
+       { socket_address: { address: 10.214.226.36, port_value: 9020 }},
+      { socket_address: { address: 10.214.226.146, port_value: 9020 }},
+      { socket_address: { address: 10.214.226.38, port_value: 9020 }},
+      { socket_address: { address: 10.214.226.39, port_value: 9020 }},
+       { socket_address: { address: 10.214.226.36, port_value: 9021 }},
+      { socket_address: { address: 10.214.226.146, port_value: 9021 }},
+      { socket_address: { address: 10.214.226.38, port_value: 9021 }},
+      { socket_address: { address: 10.214.226.39, port_value: 9021 }},
+      { socket_address: { address: 10.214.226.36, port_value: 9022 }},
+      { socket_address: { address: 10.214.226.146, port_value: 9022 }},
+      { socket_address: { address: 10.214.226.38, port_value: 9022 }},
+      { socket_address: { address: 10.214.226.39, port_value: 9022 }},
+       { socket_address: { address: 10.214.226.36, port_value: 9023 }},
+      { socket_address: { address: 10.214.226.146, port_value: 9023 }},
+      { socket_address: { address: 10.214.226.38, port_value: 9023 }},
+      { socket_address: { address: 10.214.226.39, port_value: 9023 }},
+       { socket_address: { address: 10.214.226.36, port_value: 9024 }},
+      { socket_address: { address: 10.214.226.146, port_value: 9024 }},
+      { socket_address: { address: 10.214.226.38, port_value: 9024 }},
+      { socket_address: { address: 10.214.226.39, port_value: 9024 }},
+       { socket_address: { address: 10.214.226.36, port_value: 9025 }},
+      { socket_address: { address: 10.214.226.146, port_value: 9025 }},
+      { socket_address: { address: 10.214.226.38, port_value: 9025 }},
+      { socket_address: { address: 10.214.226.39, port_value: 9025 }},
+       { socket_address: { address: 10.214.226.36, port_value: 9026 }},
+      { socket_address: { address: 10.214.226.146, port_value: 9026 }},
+      { socket_address: { address: 10.214.226.38, port_value: 9026 }},
+      { socket_address: { address: 10.214.226.39, port_value: 9026 }},
+       { socket_address: { address: 10.214.226.36, port_value: 9027 }},
+      { socket_address: { address: 10.214.226.146, port_value: 9027 }},
+      { socket_address: { address: 10.214.226.38, port_value: 9027 }},
+      { socket_address: { address: 10.214.226.39, port_value: 9027 }},
+       { socket_address: { address: 10.214.226.36, port_value: 9028 }},
+      { socket_address: { address: 10.214.226.146, port_value: 9028 }},
+      { socket_address: { address: 10.214.226.38, port_value: 9028 }},
+      { socket_address: { address: 10.214.226.39, port_value: 9028 }},
+       { socket_address: { address: 10.214.226.36, port_value: 9029 }},
+      { socket_address: { address: 10.214.226.146, port_value: 9029 }},
+      { socket_address: { address: 10.214.226.38, port_value: 9029 }},
+      { socket_address: { address: 10.214.226.39, port_value: 9029 }},
+       { socket_address: { address: 10.214.226.36, port_value: 9030 }},
+      { socket_address: { address: 10.214.226.146, port_value: 9030 }},
+      { socket_address: { address: 10.214.226.38, port_value: 9030 }},
+      { socket_address: { address: 10.214.226.39, port_value: 9030 }},
+       { socket_address: { address: 10.214.226.36, port_value: 9031 }},
+      { socket_address: { address: 10.214.226.146, port_value: 9031 }},
+      { socket_address: { address: 10.214.226.38, port_value: 9031 }},
+      { socket_address: { address: 10.214.226.39, port_value: 9031 }}
+
+    ]
+    outlier_detection:
+        consecutive_5xx: "3"
+        base_ejection_time: "30s"
+    health_checks:
+      - timeout: 1s
+        interval: 10s
+        interval_jitter: 1s
+        unhealthy_threshold: 2
+        healthy_threshold: 1
+        http_health_check:
+          path: "/"
+          expected_statuses:
+            start: 100
+            end: 310
+

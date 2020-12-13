@@ -1,0 +1,2 @@
+TotalValidblocks,Leastblocksize,MaxBlocksize,Leastblockgaslimit,Maxblockgaslimit,Leastblockgasused,Maxblockgasused,Leastblocktransactions,Maxblocktransactions,blocktimeperiod,totaltxs,finaltps,firedtps,totalfiredtime,totalblocktimeinterval,txgasused,TotalUncleblocks
+24,2518,126276,40000000,40000000,530614,35020524,14,924,2,20000,408.16326530612247,425.531914893617,47,49,37901,0.5

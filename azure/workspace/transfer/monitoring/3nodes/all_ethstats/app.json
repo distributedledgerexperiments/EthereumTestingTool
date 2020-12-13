@@ -1,0 +1,78 @@
+[
+  {
+    "name"        : "admin1",
+    "cwd"         : ".",
+    "script"      : "app.js",
+    "log_date_format"   : "YYYY-MM-DD HH:mm Z",
+    "merge_logs"    : false,
+    "watch"       : false,
+    "exec_interpreter"  : "node",
+    "exec_mode"     : "fork_mode",
+    "env":
+    {
+      "NODE_ENV"    : "production",
+      "RPC_HOST"    : "10.0.2.5",
+      "RPC_PORT"    : "2000",
+      "INSTANCE_NAME"   : "admin1",
+      "WS_SERVER"     : "http://172.26.0.102:3000",
+      "WS_SECRET"     : "test"
+    }
+  },
+  {
+    "name"        : "admin2",
+    "cwd"         : ".",
+    "script"      : "app.js",
+    "log_date_format"   : "YYYY-MM-DD HH:mm Z",
+    "merge_logs"    : false,
+    "watch"       : false,
+    "exec_interpreter"  : "node",
+    "exec_mode"     : "fork_mode",
+    "env":
+    {
+      "NODE_ENV"    : "production",
+      "RPC_HOST"    : "10.0.2.6",
+      "RPC_PORT"    : "2000",
+      "INSTANCE_NAME"   : "admin2",
+      "WS_SERVER"     : "http://172.26.0.102:3000",
+      "WS_SECRET"     : "test"
+    }
+  },
+  {
+    "name"        : "admin3",
+    "cwd"         : ".",
+    "script"      : "app.js",
+    "log_date_format"   : "YYYY-MM-DD HH:mm Z",
+    "merge_logs"    : false,
+    "watch"       : false,
+    "exec_interpreter"  : "node",
+    "exec_mode"     : "fork_mode",
+    "env":
+    {
+      "NODE_ENV"    : "production",
+      "RPC_HOST"    : "10.0.2.7",
+      "RPC_PORT"    : "2000",
+      "INSTANCE_NAME"   : "admin3",
+      "WS_SERVER"     : "http://172.26.0.102:3000",
+      "WS_SECRET"     : "test"
+    }
+  },
+  {
+    "name"        : "boot",
+    "cwd"         : ".",
+    "script"      : "app.js",
+    "log_date_format"   : "YYYY-MM-DD HH:mm Z",
+    "merge_logs"    : false,
+    "watch"       : false,
+    "exec_interpreter"  : "node",
+    "exec_mode"     : "fork_mode",
+    "env":
+    {
+      "NODE_ENV"    : "production",
+      "RPC_HOST"    : "10.0.2.4",
+      "RPC_PORT"    : "2000",
+      "INSTANCE_NAME"   : "boot",
+      "WS_SERVER"     : "http://172.26.0.102:3000",
+      "WS_SECRET"     : "test"
+    }
+  }
+]

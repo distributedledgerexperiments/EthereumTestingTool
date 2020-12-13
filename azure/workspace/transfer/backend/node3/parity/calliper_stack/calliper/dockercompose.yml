@@ -1,0 +1,16 @@
+version: '2'
+
+services:
+    caliper:
+        container_name: caliper
+        image: renault/caliper
+        build:
+                  context: .
+                  dockerfile: dockercaliper
+        command: launch master
+        environment:
+        - CALIPER_BIND_SUT=ethereum:latest
+        - CALIPER_BENCHCONFIG=contractdata/config.yaml
+        - CALIPER_NETWORKCONFIG=networks/connector.json
+        volumes:
+        - ./workspace:/hyperledger/caliper/workspace

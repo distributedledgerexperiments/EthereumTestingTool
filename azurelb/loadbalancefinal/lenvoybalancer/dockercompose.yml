@@ -1,0 +1,29 @@
+version: "2.2"
+services:
+        
+        envoynode:
+                image: envoyproxy/envoy-alpine:v1.14.1
+                volumes:
+                 - ./envoy.yaml:/etc/envoy/envoy.yaml
+                 - ./envoydata:/var/access.log
+                hostname: envoynode
+                ports:
+                 - "8080:8080"
+                 - "8081:8081"
+                cpus: 2
+                mem_limit: 1000M
+                networks:
+                  chainnet:
+                    ipv4_address: 172.25.0.101
+
+networks:
+  chainnet:
+    driver: bridge
+    ipam:
+      config:
+      - subnet: 172.25.0.0/24
+        gateway: 172.25.0.1
+
+        
+
+        

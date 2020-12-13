@@ -1,0 +1,158 @@
+version: "2.2"
+services:
+        
+        redisnode:
+                image: redis:6.0.3-alpine
+                volumes:
+                 - ./volumedata/redisdata:/data
+                command: ["redis-server", "--appendonly", "yes"]
+                hostname: redisnode
+                ports:
+                 - "6379:6379"
+                cpus: 1
+                mem_limit: 1000M
+                networks:
+                  chainnet:
+                    ipv4_address: 172.25.0.1
+
+        rabbitmqxx:
+                image: 127.0.0.1:5000/renaultblockchain/rabbitbase
+                restart: on-failure
+                volumes:
+                 - ./volumedata/rabbitmqxx:/var/lib/rabbitmq
+                hostname: rabbitmqxx
+                container_name: rabbitmqxx
+                cpus: 0.5
+                mem_limit: 1000M
+                networks:
+                  chainnet:
+                    ipv4_address: 172.25.0.xx
+                healthcheck:
+                 test: ["CMD", "curl", "-f", "http://localhost:15672"]
+                 interval: 30s
+                 timeout: 10s
+                 retries: 5
+        
+        aioserverxx:
+                image: 127.0.0.1:5000/renaultblockchain/aioserverbase
+                restart: on-failure
+                hostname: docker_aioserverxx
+                depends_on:
+                        - redisnode
+                        - rabbitmqxx
+                links:
+                        - rabbitmqxx
+                environment:
+                        - pythonfile=aioserverqueueproducer.py
+                        - rabbithost=172.25.0.xx
+                container_name: aioserverxx
+                ports:
+                 - "900xx:9090"
+                cpus: 1
+                mem_limit: 1000M
+                networks:
+                  chainnet:
+                    ipv4_address: 172.25.0.10xx
+
+        serverworkerxx:
+                image: 127.0.0.1:5000/renaultblockchain/workerbase
+                restart: on-failure
+                hostname: workerxx
+                depends_on:
+                        - redisnode
+                        - aioserverxx
+                        - rabbitmqxx
+                links:
+                        - rabbitmqxx
+                environment:
+                        - pythonfile=classqueueworker.py
+                        - gethurl=ws://10.214.226.142:2200
+                        - hosturl=10.214.226.36
+                        - mongodbport=27017
+                        - rabbithost=172.25.0.xx
+                container_name: workerxx
+                cpus: 1
+                mem_limit: 1000M
+                networks:
+                  chainnet:
+                    ipv4_address: 172.25.0.20xx
+
+ ------------------------------------- ---------------------------------------------------
+ 2nd match
+        
+        rabbitmqxx:
+                image: 127.0.0.1:5000/renaultblockchain/rabbitbase
+                restart: on-failure
+                volumes:
+                 - ./volumedata/rabbitmqxx:/var/lib/rabbitmq
+                hostname: rabbitmqxx
+                container_name: rabbitmqxx
+                cpus: 0.5
+                mem_limit: 1000M
+                networks:
+                  chainnet:
+                    ipv4_address: 172.25.0.xx
+                healthcheck:
+                 test: ["CMD", "curl", "-f", "http://localhost:15672"]
+                 interval: 30s
+                 timeout: 10s
+                 retries: 5
+
+        aioserverxx:
+                image: 127.0.0.1:5000/renaultblockchain/aioserverbase
+                restart: on-failure
+                hostname: docker_aioserverxx
+                depends_on:
+                        - redisnode
+                        - rabbitmqxx
+                links:
+                        - rabbitmqxx
+                environment:
+                        - pythonfile=aioserverqueueproducer.py
+                        - rabbithost=172.25.0.xx
+                container_name: aioserverxx
+                ports:
+                 - "90xx:9090"
+                cpus: 1
+                mem_limit: 1000M
+                networks:
+                  chainnet:
+                    ipv4_address: 172.25.0.1xx
+
+        serverworkerxx:
+                image: 127.0.0.1:5000/renaultblockchain/workerbase
+                restart: on-failure
+                hostname: workerxx
+                depends_on:
+                        - redisnode
+                        - aioserverxx
+                        - rabbitmqxx
+                links:
+                        - rabbitmqxx
+                environment:
+                        - pythonfile=classqueueworker.py
+                        - gethurl=ws://10.214.226.142:2200
+                        - hosturl=10.214.226.36
+                        - mongodbport=27017
+                        - rabbithost=172.25.0.xx
+                container_name: workerxx
+                cpus: 1
+                mem_limit: 1000M
+                networks:
+                  chainnet:
+                    ipv4_address: 172.25.0.2xx
+
+        
+        
+
+networks:
+  chainnet:
+    driver: bridge
+    ipam:
+      config:
+      - subnet: 172.25.0.0/24
+        gateway: 172.25.0.254
+
+        
+
+        

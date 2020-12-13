@@ -1,0 +1,291 @@
+{
+	"name": "main",
+	"abi": [
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "metadata",
+				"type": "uint256"
+			}
+		],
+		"name": "addTest",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "first_value",
+				"type": "uint256"
+			}
+		],
+		"name": "firstMapTest",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "first_value",
+				"type": "uint256"
+			},
+			{
+				"name": "scnd_value",
+				"type": "uint256"
+			}
+		],
+		"name": "secondMapTest",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "first_value",
+				"type": "uint256"
+			},
+			{
+				"name": "scnd_value",
+				"type": "uint256"
+			},
+			{
+				"name": "thrd_value",
+				"type": "uint256"
+			}
+		],
+		"name": "thirdMapTest",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "firstmap",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "firstmap_firstcounter",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getCounter",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "maintxsetcounter",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "readAdd",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "readFirstMap",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "readSecondMap",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "readThirdMap",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "secondmap",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "secondmap_firstcounter",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "secondtxsetcounter",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "thirdmap",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "thirdmap_firstcounter",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "thirdtxsetcounter",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	}
+],
+"bytecode": "0x6080604052600080556000600155600060025560006006556000600755600060085534801561002d57600080fd5b506107818061003d6000396000f3fe6080604052600436106100f6576000357c0100000000000000000000000000000000000000000000000000000000900480630d995ce6146100fb57806316b1d36f146101385780632402fe91146101635780632963606a1461018e5780633863dbb8146101cb5780633a97c476146101f65780633f3da37014610221578063835e877a1461024c57806385bd611f146102775780638ada066e146102b457806391041132146102df5780639b76ee5614610308578063a127914314610333578063a3dac5c71461035e578063ad54ccab1461039b578063b9efb50e146103c6578063d4475eed146103f1578063de0b22e91461041a575b600080fd5b34801561010757600080fd5b50610122600480360361011d9190810190610655565b610443565b60405161012f9190610718565b60405180910390f35b34801561014457600080fd5b5061014d61045b565b60405161015a9190610718565b60405180910390f35b34801561016f57600080fd5b5061017861047b565b6040516101859190610718565b60405180910390f35b34801561019a57600080fd5b506101b560048036036101b09190810190610655565b610481565b6040516101c29190610718565b60405180910390f35b3480156101d757600080fd5b506101e0610499565b6040516101ed9190610718565b60405180910390f35b34801561020257600080fd5b5061020b61049f565b6040516102189190610718565b60405180910390f35b34801561022d57600080fd5b506102366104bf565b6040516102439190610718565b60405180910390f35b34801561025857600080fd5b506102616104c5565b60405161026e9190610718565b60405180910390f35b34801561028357600080fd5b5061029e60048036036102999190810190610655565b6104e5565b6040516102ab9190610718565b60405180910390f35b3480156102c057600080fd5b506102c96104fd565b6040516102d69190610718565b60405180910390f35b3480156102eb57600080fd5b5061030660048036036103019190810190610655565b610507565b005b34801561031457600080fd5b5061031d610530565b60405161032a9190610718565b60405180910390f35b34801561033f57600080fd5b50610348610536565b6040516103559190610718565b60405180910390f35b34801561036a57600080fd5b5061038560048036036103809190810190610655565b61053c565b6040516103929190610718565b60405180910390f35b3480156103a757600080fd5b506103b061056b565b6040516103bd9190610718565b60405180910390f35b3480156103d257600080fd5b506103db610571565b6040516103e89190610718565b60405180910390f35b3480156103fd57600080fd5b506104186004803603610413919081019061067e565b61057a565b005b34801561042657600080fd5b50610441600480360361043c91908101906106ba565b6105ca565b005b60036020528060005260406000206000915090505481565b600060036000600160065403815260200190815260200160002054905090565b60075481565b60046020528060005260406000206000915090505481565b60015481565b600060056000600160085403815260200190815260200160002054905090565b60085481565b600060046000600160075403815260200190815260200160002054905090565b60056020528060005260406000206000915090505481565b6000600654905090565b806003600060065481526020019081526020016000208190555060016006540160068190555050565b60005481565b60025481565b600060016000540160008190555060018054016001819055506001600254016002819055506000549050919050565b60065481565b60008054905090565b816003600060065481526020019081526020016000208190555060016006540160068190555080600460006007548152602001908152602001600020819055506001600754016007819055505050565b826003600060065481526020019081526020016000208190555060016006540160068190555081600460006007548152602001908152602001600020819055506001600754016007819055508060056000600854815260200190815260200160002081905550600160085401600881905550505050565b600061064d823561073d565b905092915050565b60006020828403121561066757600080fd5b600061067584828501610641565b91505092915050565b6000806040838503121561069157600080fd5b600061069f85828601610641565b92505060206106b085828601610641565b9150509250929050565b6000806000606084860312156106cf57600080fd5b60006106dd86828701610641565b93505060206106ee86828701610641565b92505060406106ff86828701610641565b9150509250925092565b61071281610733565b82525050565b600060208201905061072d6000830184610709565b92915050565b6000819050919050565b600081905091905056fea265627a7a72305820686545b383dbe94153b68bbcdb42b95eccc63770dec4776a05b1a982d84a20236c6578706572696d656e74616cf50037",
+"gas": 4700000
+}
