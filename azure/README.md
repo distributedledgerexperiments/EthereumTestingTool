@@ -4,6 +4,8 @@ Azure deployment suite
 
 Folder structure:
 
+Inside workspace directory:
+
 blkchain:
 
 Contains the Blockchain network configuration files, scripts, node data:
